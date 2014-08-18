@@ -70,7 +70,7 @@
                 <asp:ListItem>Weibull</asp:ListItem>
             </asp:DropDownList>
 &nbsp;&nbsp;&nbsp; Distribution value&nbsp;
-            <asp:DropDownList ID="ddl_value" runat="server" OnSelectedIndexChanged="ddl_value_SelectedIndexChanged" AutoPostBack="True">
+            <asp:DropDownList ID="ddl_value" runat="server" AutoPostBack="True">
                 <asp:ListItem>l0</asp:ListItem>
                 <asp:ListItem>delta</asp:ListItem>
                 <asp:ListItem>a0</asp:ListItem>
@@ -117,8 +117,7 @@
         &nbsp;&nbsp;&nbsp;
             <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Show From" />
         &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Button" />
-        </p>
+            </p>
         <p aria-checked="undefined">
             Start calculation time:&nbsp;&nbsp;&nbsp;
             <asp:Label ID="lb_start" runat="server"></asp:Label>

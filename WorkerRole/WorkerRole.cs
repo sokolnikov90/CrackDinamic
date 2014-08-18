@@ -40,11 +40,7 @@ namespace WorkerRole
                     double[,] arrMultiD = Resh_env_cycle(Convert.ToDouble(argument[1]) * Math.Pow(Convert.ToDouble(argument[6]), 2) / (Math.Pow(Convert.ToDouble(argument[4]), 2) * Math.PI), Convert.ToDouble(argument[2]),
                         Convert.ToDouble(argument[3]), Convert.ToDouble(argument[4]), Convert.ToDouble(argument[5]), Convert.ToDouble(argument[6]),
                         Convert.ToDouble(argument[7]), Convert.ToDouble(argument[8]), Convert.ToDouble(argument[9]), Convert.ToDouble(argument[10]), Convert.ToDouble(argument[11]));
-/*
-                    double[,] arrMultiD = Resh_env_cycle(Convert.ToDouble(argument[1]), Convert.ToDouble(argument[2]),
-                        Convert.ToDouble(argument[3]), Convert.ToDouble(argument[4]), Convert.ToDouble(argument[5]), Convert.ToDouble(argument[6]),
-                        Convert.ToDouble(argument[7]), Convert.ToDouble(argument[8]), Convert.ToDouble(argument[9]), Convert.ToDouble(argument[10]), Convert.ToDouble(argument[11]));
-      */                 
+                
                     stopWatch.Stop();
                     double [,] a = fatigue_l_t(0.5,Convert.ToDouble(argument[4]),Convert.ToDouble(argument[1]) * Math.Pow(Convert.ToDouble(argument[6]), 2) / (Math.Pow(Convert.ToDouble(argument[4]), 2) * Math.PI),
                         Convert.ToDouble(argument[2]), Convert.ToDouble(argument[6]));
@@ -58,10 +54,7 @@ namespace WorkerRole
                         
                         if (arrMultiD[i, 1] != 0)
                         {
-                    /*        InsertToTableData(TableData, Convert.ToInt32(argument[0]), i, arrMultiD[i, 1].ToString(), arrMultiD[i, 2].ToString(), arrMultiD[i, 3].ToString(), arrMultiD[i, 4].ToString(),
-                                              arrMultiD[i, 5].ToString(), arrMultiD[i, 6].ToString(), arrMultiD[i, 7].ToString(), arrMultiD[i, 8].ToString(), arrMultiD[i, 9].ToString(),
-                                              arrMultiD[i, 10].ToString(), arrMultiD[i, 11].ToString(), arrMultiD[i, 12].ToString(), arrMultiD[i, 13].ToString(), arrMultiD[i, 14].ToString());
-                      */      last_table_line = i;
+                             last_table_line = i;
                         }
                         else
                         {
@@ -77,10 +70,6 @@ namespace WorkerRole
                     }
 
 
-
-
-
-
                     InsertToTableSimulation(TableSimulation, 0, Convert.ToInt32(argument[0]), ts.ToString(), arrMultiD[1, 1].ToString(), arrMultiD[last_table_line, 7].ToString());
                     // удаляем сообщение из очереди
                     Queue.DeleteMessage(Message);
@@ -92,21 +81,6 @@ namespace WorkerRole
 
             }
         }
-
-///////////////
-               //     Run_func(argument);
-              //      InsertToTableData(TableData, argument[0], argument[1], argument[2], argument[3], argument[4], argument[5],
-             //           argument[6], argument[7], argument[8], argument[9], argument[10], "0", "a",
-             //           "b", "c", "d");
-/*
-                  for (int i = 1; i < 6; i++)
-                    {
-
-                        InsertToTableData(TableData, argument[0], i.ToString(), argument[1], argument[2], argument[3], argument[4], argument[5],
-                        argument[6], argument[7], argument[8], argument[9], argument[10], argument[11], "a",
-                        "b", "c");
-                    } */
- 
 
 
         public class EntityOfTableData : TableEntity
@@ -193,34 +167,6 @@ namespace WorkerRole
                 throw;
             }
         }
-        /*
-        public void Run_func(string[] argument)
-        {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-            double[,] arrMultiD = Resh_env_cycle(Convert.ToDouble(argument[1]) * Math.Pow(80, 2) / (Math.Pow(140, 2) * Math.PI), Convert.ToDouble(argument[2]),
-                Convert.ToDouble(argument[3]), Convert.ToDouble(argument[4]), Convert.ToDouble(argument[5]), Convert.ToDouble(argument[6]),
-                Convert.ToDouble(argument[7]), Convert.ToDouble(argument[8]), Convert.ToDouble(argument[9]), Convert.ToDouble(argument[10]), Convert.ToDouble(argument[11]));
-            stopWatch.Stop();
-            // Get the elapsed time as a TimeSpan value.
-            long ts = stopWatch.ElapsedMilliseconds;
-
-            CloudTableClient tableClient = StorageAccount.CreateCloudTableClient();
-            CloudTable TableData = tableClient.GetTableReference("TableData");
-            CloudTable TableSimulation = tableClient.GetTableReference("TableSimulation");
-
-            for (int i = 1; i < arrMultiD.GetLength(0); i++)
-            {
-                if (arrMultiD[i, 1] != 0)
-                {
-                    InsertToTableData(TableData, argument[0], i.ToString(), arrMultiD[i, 1].ToString(), arrMultiD[i, 2].ToString(), arrMultiD[i, 3].ToString(), arrMultiD[i, 4].ToString(),
-                                      arrMultiD[i, 5].ToString(), arrMultiD[i, 6].ToString(), arrMultiD[i, 7].ToString(), arrMultiD[i, 8].ToString(), arrMultiD[i, 9].ToString(),
-                                      arrMultiD[i, 10].ToString(), arrMultiD[i, 11].ToString(), arrMultiD[i, 12].ToString(), arrMultiD[i, 13].ToString(), arrMultiD[i, 14].ToString());
-                }
-            }
-            InsertToTableSimulation(TableSimulation, argument[0], "0", ts.ToString());
-        }
-         */
 
         public override bool OnStart()
         {
@@ -610,12 +556,6 @@ namespace WorkerRole
             }
             return a;
         }
-
-
-        ////////////////////////////////////
-
-        ///////////////////////////////////////////////////////////////////////////End
-
 
     }
 }
